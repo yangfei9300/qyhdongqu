@@ -32,15 +32,14 @@ const Api20241023getUserList =BASE_URL + '/Api20241023/getUserList'
 const Api20241023markPut =BASE_URL + '/Api20241023/markPut'
 // api/Api20241023/dtLogInfo
 const Api20241023dtLogInfo =BASE_URL + '/Api20241023/dtLogInfo'
-
-
-
-
-
-
+// 获取打分记录  api20241023/getUserLScoreList  
+const Api20241023getUserLScoreList =BASE_URL + '/Api20241023/getUserLScoreList'
+// 5获取选手胸有成竹得分列表（控制端）
+// api/Api20241024/getUserLScoreList
 
  export default {
 	 // 23号开始
+	 Api20241023getUserLScoreList,
 	 Api20241023login,
 	 Api20241023getUserList,
 	 Api20241023markPut,

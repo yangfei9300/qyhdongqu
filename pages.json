@@ -86,6 +86,15 @@
 				"navigationBarTitleText" : "选择方向",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path" : "pages/fenshus/fenshus",
+			"style" : 
+			{
+				"navigationBarTitleText" : "打分记录",
+				"navigationStyle": "custom"
+				
+			}
 		}
 	],
 	"globalStyle": {

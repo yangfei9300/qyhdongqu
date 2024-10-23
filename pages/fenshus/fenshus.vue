@@ -9,7 +9,7 @@
 			>
 				<view class="h-0"></view>
 				<view class="roww center_center duiqi h-100">
-					<view class="fs-40 fw-700 h-100" style="line-height: 100rpx;">选手列表</view>
+					<view class="fs-40 fw-700 h-100" style="line-height: 100rpx;">打分记录</view>
 				</view>
 				<view class="h-30"></view>
 				<scroll-view
@@ -21,35 +21,12 @@
 					<view class="colonn p-all-30" >
 						
 						<block v-for="(item,index) in userList">
-							<block v-if="identityType==2">
-								<view class="roww rowsa fw-700 p-bottom-40" style="color: #cccccc;"
-								v-if="item.is_score==1"
-								@click.stop="markClick(1,item)"
-								>
-									<view class="w-100 cebtees">{{index+1}}.</view>
-									<view class="w-208 cebtees">{{item.username}}</view>
-									<view class="w-208 cebtees" v-if="item.is_score==1">修改</view>
-								</view>
-								<view class="roww rowsa fw-700 p-bottom-40"  v-else
-								@click.stop="markClick(1,item)"
-								>
-									<view class="w-100 cebtees">{{index+1}}.</view>
-									<view class="w-208 cebtees">{{item.username}}</view>
-									<view class="w-208 cebtees" >未打分</view>
-								</view>
-							</block>
-							<block v-else>
-								<view class="roww rowsa fw-700 p-bottom-40" 
-								
-								>
-									<view class="w-100 cebtees">{{index+1}}.</view>
-									<view class="w-208 cebtees">{{item.username}}</view>
-									<view class="w-208 cebtees" 
-									@click.stop="markClick(2,item)"
-									>查看</view>
-								</view>
-							</block>
-							
+							<view class="roww rowsa fw-700 p-bottom-40" style="color: #000000;"  
+							>
+								<view class="w-100 cebtees">{{index+1}}.</view>
+								<view class="w-208 cebtees">{{item.username}}</view>
+								<view class="w-208 cebtees" >{{item.score}}</view>
+							</view>
 						</block>
 						
 						
@@ -88,11 +65,10 @@
 				tiIndex:1,
 				
 				userList:[],//用户列表
-			identityType:""
+			
 			}
 		},
 		onLoad() {
-			this.identityType=uni.getStorageSync("usertype")
 			// 获取当前界面的宽高
 			const systemInfo = uni.getSystemInfoSync();
 			const screenWidth = systemInfo.screenWidth;
@@ -111,19 +87,13 @@
 			// 判断是否可以评分
 			markClick(type,item){
 				
-				if(type==1){
-					uni.setStorageSync("dafenUser",item);
-					uni.navigateTo({
-						url:"/pages/xycz/xycz"
-					})
-				}else{
-					uni.setStorageSync("dafenUser",item);
-					uni.navigateTo({
-						url:"/pages/fenshus/fenshus"
-					})
-				}
 				
+				uni.setStorageSync("dafenUser",item);
 				
+				uni.navigateTo({
+					url:"/pages/xycz/xycz"
+				})
+				 
 				// console.log("打分",item);
 				// var data={
 				// 	'uuid':uni.getStorageSync("userId"),
@@ -152,10 +122,10 @@
 			// 获取用户列表
 			getuserList(){
 				var data={
-					'uuid':uni.getStorageSync("userId")
+					'user_id':uni.getStorageSync("dafenUser").user_id
 				}
 				this.$axios
-					.axios('POST', this.$paths.Api20241023getUserList,data)
+					.axios('POST', this.$paths.Api20241023getUserLScoreList,data)
 					.then(res => {
 						if(res.code==1){
 							this.userList=res.data;
@@ -207,5 +177,5 @@
 </script>
 
 <style>
-	@import url(userList.css);
+	@import url(fenshus.css);
 </style>

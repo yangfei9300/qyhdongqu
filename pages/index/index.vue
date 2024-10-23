@@ -121,9 +121,6 @@
 				if(this.identity==1){
 					this.getTestStatus();
 				}else if(this.identity==2||this.identity==3){
-					// uni.navigateTo({
-					// 	url:"/pages/selType/selType"
-					// })
 					uni.navigateTo({
 						url:"/pages/userList/userList"
 					})

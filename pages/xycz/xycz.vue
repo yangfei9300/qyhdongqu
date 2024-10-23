@@ -66,7 +66,7 @@
 								<view class="fs-40  w-690">5.如可能，提出进一步诊断方案(10分)</view>
 								<view class="h-20"></view>
 								<input type="number" class="textawa" v-model="fens.fen5"
-									@input="isFenSubChange($event,4)" placeholder="最高5分"></input>
+									@input="isFenSubChange($event,4)" placeholder="最高10分"></input>
 									
 									
 									
@@ -93,7 +93,7 @@
 								class="textawa" 
 								v-model="fens.fen7" 
 								@input="isFenSubChange($event,6)"
-								placeholder="最高10分"
+								placeholder="最高5分"
 									></input>
 									
 								
@@ -108,7 +108,7 @@
 								<input type="number" class="textawa" 
 								v-model="fens.fen8" 
 								@input="isFenSubChange($event,7)"
-									placeholder="最高10分"></input>
+									placeholder="最高5分"></input>
 								
 								
 							</view>
@@ -120,7 +120,7 @@
 								<input type="number" class="textawa" 
 								v-model="fens.fen9" 
 								@input="isFenSubChange($event,8)"
-									placeholder="最高10分"></input>
+									placeholder="最高5分"></input>
 							</view>
 							
 							<view style="color: red;"  v-if="!heTishi[8]">第9项得分小于等于5</view>
